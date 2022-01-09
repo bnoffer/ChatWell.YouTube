@@ -68,7 +68,7 @@ namespace ChatWell.YouTube
                             if (response != null)
                             {
                                 nextPageToken = response.NextPageToken;
-                                pollingIntervalMilliseconds = response.PollingIntervalMillis ?? 1000;
+                                pollingIntervalMilliseconds = 1000;
 
                                 if (!isFirstRun)
                                 {
