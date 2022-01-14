@@ -68,7 +68,7 @@ namespace ChatWell.YouTube
                             if (response != null)
                             {
                                 nextPageToken = response.NextPageToken;
-                                pollingIntervalMilliseconds = 1000;
+                                pollingIntervalMilliseconds = 5000;
 
                                 if (!isFirstRun)
                                 {
@@ -89,6 +89,10 @@ namespace ChatWell.YouTube
 
                             retryAttempts++;
                             await Task.Delay(retryAttempts * 1000).ConfigureAwait(false);
+                        }
+                        catch (Exception)
+                        {
+                            this.disconnect = true;
                         }
 
                         await Task.Delay((int)pollingIntervalMilliseconds).ConfigureAwait(false);
